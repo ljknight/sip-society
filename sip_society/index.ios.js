@@ -12,6 +12,9 @@ AppRegistry.registerComponent('sip_society_ios', () => App)
 
 // *** Views ***
 // login/signup
+  // FB auth & email https://developers.facebook.com/docs/react-native/login
+  // verify email address
+  // forgot password
 // events
   // list
     // past & upcoming
@@ -22,6 +25,7 @@ AppRegistry.registerComponent('sip_society_ios', () => App)
   // detail
     // add/edit wine
       // who brought it
+      // which event
       // use api - only have 1 per kind in db
       // your rating
       // notes
@@ -29,3 +33,4 @@ AppRegistry.registerComponent('sip_society_ios', () => App)
   // wines you've brought
   // admin
     // add new events & edit existing
+  // email address

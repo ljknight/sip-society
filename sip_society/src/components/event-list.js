@@ -37,7 +37,7 @@ const SectionHeader = props => (
 
 const EventListItem = ({ event, navigate }) => {
   const date = moment(event.date).format('MMMM DD, YYYY')
-  
+
   return (
     <TouchableHighlight onPress={() => navigate('Event', { event: date })}>
       <View style={styles.container}>
@@ -53,10 +53,6 @@ const EventListItem = ({ event, navigate }) => {
 }
 
 export default class EventList extends Component {
-  static navigationOptions = {
-    title: 'Events'
-  }
-
   constructor(props) {
     super(props)
     const { dataBlob, sectionIds, rowIds } = this.formatSections(demoData)
