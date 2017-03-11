@@ -4,20 +4,11 @@ import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import * as firebase from 'firebase'
 import firebaseConfig from './firebase-config'
-
-import EventList from 'src/components/event-list'
+import App from 'src/navigation'
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 
-export default class SipSocietyIos extends Component {
-  render() {
-    return (
-      <EventList/>
-    )
-  }
-}
-
-AppRegistry.registerComponent('sip_society_ios', () => SipSocietyIos)
+AppRegistry.registerComponent('sip_society_ios', () => App)
 
 // *** Views ***
 // login/signup
@@ -25,7 +16,7 @@ AppRegistry.registerComponent('sip_society_ios', () => SipSocietyIos)
   // list
     // past & upcoming
   // detail
-    // date, wines, who was there, where it was, what kind of wine
+    // date, wines, who was there, where it was, what kind of wine, comments
 // wines
   // list (either all wines you've rated or all wines from all events you've attended)
   // detail

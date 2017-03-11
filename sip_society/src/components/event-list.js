@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import { Text, View, ListView } from 'react-native'
+import { Text, View, ListView, Button, TouchableHighlight } from 'react-native'
 import moment from 'moment'
 
 import styles from 'src/styles/styles'
@@ -29,30 +29,34 @@ const demoData = [{
   wine_type: 'Pinot Grigio'
 }]
 
-const Header = () => (
-  <View style={styles.container}>
-    <Text>Events</Text>
-  </View>
-)
-
 const SectionHeader = props => (
   <View style={styles.container}>
     <Text style={styles.welcome}>{props.text}</Text>
   </View>
 )
 
-const EventListItem = ({ event }) => (
-  <View style={styles.container}>
-    <Text style={styles.welcome}>
-      {event.wine_type}
-    </Text>
-    <Text style={styles.instructions}>
-      {moment(event.date).format('dddd, MMMM Do YYYY')} at {event.location}
-    </Text>
-  </View>
-)
+const EventListItem = ({ event, navigate }) => {
+  const date = moment(event.date).format('MMMM DD, YYYY')
+  
+  return (
+    <TouchableHighlight onPress={() => navigate('Event', { event: date })}>
+      <View style={styles.container}>
+        <Text style={styles.welcome}>
+          {event.wine_type}
+        </Text>
+        <Text style={styles.instructions}>
+          {date} at {event.location}
+        </Text>
+      </View>
+    </TouchableHighlight>
+  )
+}
 
 export default class EventList extends Component {
+  static navigationOptions = {
+    title: 'Events'
+  }
+
   constructor(props) {
     super(props)
     const { dataBlob, sectionIds, rowIds } = this.formatSections(demoData)
@@ -105,12 +109,13 @@ export default class EventList extends Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation
+
     return (
       <View>
         <ListView
           dataSource={this.state.dataSource}
-          renderRow={rowData => <EventListItem event={rowData}/>}
-          renderHeader={() => <Header/>}
+          renderRow={rowData => <EventListItem event={rowData} navigate={navigate}/>}
           renderSectionHeader={(sectionData) => <SectionHeader {...sectionData}/>}
         />
       </View>
