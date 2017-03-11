@@ -1,0 +1,3 @@
+rootProject.name = 'sip_society_ios'
+
+include ':app'
